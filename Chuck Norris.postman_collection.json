@@ -56,14 +56,10 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"\r",
-							"pm.test(\"Response body contains 'birthday' key\", function () {\r",
-							"    pm.expect(pm.response.json()).to.have.property('birthday');\r",
+							"pm.test(\"Response body contains food category\", function () {\r",
+							"    pm.expect(pm.response.json().categories).to.include(\"food\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Response body 'error' key value is 'Not Found'\", function () {\r",
-							"    pm.expect(pm.response.json().error).to.equal('Not Found');\r",
-							"});\r",
 							""
 						],
 						"type": "text/javascript",
@@ -75,7 +71,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.chucknorris.io/jokes/random?category=sport",
+					"raw": "https://api.chucknorris.io/jokes/random?category=food",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -89,7 +85,7 @@
 					"query": [
 						{
 							"key": "category",
-							"value": "sport"
+							"value": "food"
 						}
 					]
 				}
