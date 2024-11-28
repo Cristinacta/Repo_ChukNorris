@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "8c65cd56-81cf-4217-9d17-c626d053734e",
+		"name": "Chuck Norris",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39996028"
+	},
+	"item": [
+		{
+			"name": "Recuperar un chiste aleatorio en formato JSON",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status is OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body is OK\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"ok\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/random",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recupera un chiste aleatorio de Chuck Norris de una categoría dada.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'birthday' key\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property('birthday');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body 'error' key value is 'Not Found'\", function () {\r",
+							"    pm.expect(pm.response.json().error).to.equal('Not Found');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/random?category=sport",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"random"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "sport"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recuperar una lista de categorías disponibles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'animal'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include('animal');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/categories",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Búsqueda de texto libre.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response body contains 'ok'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"ok\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.chucknorris.io/jokes/search?query=year",
+					"protocol": "https",
+					"host": [
+						"api",
+						"chucknorris",
+						"io"
+					],
+					"path": [
+						"jokes",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "year"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
